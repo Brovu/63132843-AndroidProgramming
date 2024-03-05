@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textViewA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số a"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtA"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewA"
+        app:layout_constraintTop_toTopOf="@+id/textViewA" />
+
+    <TextView
+        android:id="@+id/textViewB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số b"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewA" />
+
+    <EditText
+        android:id="@+id/edtB"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewB"
+        app:layout_constraintTop_toTopOf="@+id/textViewB" />
+
+    <Button
+        android:id="@+id/btnCong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="cong"
+        android:text="Cộng"
+        app:layout_constraintEnd_toStartOf="@+id/btnTru"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtB" />
+
+    <Button
+        android:id="@+id/btnTru"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="tru"
+        android:text="Trừ"
+        app:layout_constraintEnd_toStartOf="@+id/btnNhan"
+        app:layout_constraintStart_toEndOf="@+id/btnCong"
+        app:layout_constraintTop_toTopOf="@+id/btnCong" />
+
+    <Button
+        android:id="@+id/btnNhan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="nhan"
+        android:text="Nhân"
+        app:layout_constraintEnd_toStartOf="@+id/btnChia"
+        app:layout_constraintStart_toEndOf="@+id/btnTru"
+        app:layout_constraintTop_toTopOf="@+id/btnCong" />
+
+    <Button
+        android:id="@+id/btnChia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="chia"
+        android:text="Chia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnNhan"
+        app:layout_constraintTop_toTopOf="@+id/btnCong" />
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kết quả"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCong" />
+
+    <EditText
+        android:id="@+id/edtRes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewResult"
+        app:layout_constraintTop_toTopOf="@+id/textViewResult" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
