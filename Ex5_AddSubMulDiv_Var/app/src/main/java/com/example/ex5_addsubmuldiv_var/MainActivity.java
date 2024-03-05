@@ -20,12 +20,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Khởi tạo các EditText
         edtA = findViewById(R.id.edtA);
         edtB = findViewById(R.id.edtB);
         edtRes = findViewById(R.id.edtRes);
-
-        // Thiết lập bộ lắng nghe cho các nút
         findViewById(R.id.btnCong).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Phương thức thực hiện phép tính
+ 
     private void performOperation(char operator) {
         try {
             double a = Double.parseDouble(edtA.getText().toString());
