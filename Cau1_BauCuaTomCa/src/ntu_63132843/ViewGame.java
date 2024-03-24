@@ -34,7 +34,7 @@ public class ViewGame extends JFrame {
     	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 400);
         contentPane = new JPanel();
-        contentPane.setBackground(Color.ORANGE); // Màu nền trắng
+        contentPane.setBackground(Color.WHITE); // Màu nền trắng
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
@@ -124,95 +124,99 @@ public class ViewGame extends JFrame {
         btnBet.setBackground(Color.GREEN); // Màu nút xanh
         btnBet.setForeground(Color.WHITE); // Màu chữ trắng
         btnBet.setFont(new Font("Arial", Font.BOLD, 25)); // Sử dụng font mới
-      
+        btnBet.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                rollDice();
+            }
+        });
         btnBet.setBounds(155, 282, 134, 50);
         contentPane.add(btnBet);
     }
-    
+
     private void rollDice() {
-    	  Map<String, Integer> diceResult = new HashMap<>();
-          diceResult.put("Tôm", 0);
-          diceResult.put("Cua", 0);
-          diceResult.put("Cá", 0);
-          diceResult.put("Bầu", 0);
-          diceResult.put("Gà", 0);
-          diceResult.put("Nai", 0);
+        Map<String, Integer> diceResult = new HashMap<>();
+        diceResult.put("Tôm", 0);
+        diceResult.put("Cua", 0);
+        diceResult.put("Cá", 0);
+        diceResult.put("Bầu", 0);
+        diceResult.put("Gà", 0);
+        diceResult.put("Nai", 0);
 
-          int totalRolls = 0;
-          Random rand = new Random();
-          int totalWin = 0;
-          int totalLose = 0; // Biến để theo dõi tổng số tiền bị mất
+        int totalRolls = 0;
+        Random rand = new Random();
+        int totalWin = 0;
+        int totalLose = 0; // Biến để theo dõi tổng số tiền bị mất
 
-          int shrimpBet = Integer.parseInt(textFieldShrimp.getText());
-          int crabBet = Integer.parseInt(textFieldCrab.getText());
-          int fishBet = Integer.parseInt(textFieldFish.getText());
-          int gourdBet = Integer.parseInt(textFieldGourd.getText());
-          int roosterBet = Integer.parseInt(textFieldRooster.getText());
-          int deerBet = Integer.parseInt(textFieldDeer.getText());
+        int shrimpBet = Integer.parseInt(textFieldShrimp.getText());
+        int crabBet = Integer.parseInt(textFieldCrab.getText());
+        int fishBet = Integer.parseInt(textFieldFish.getText());
+        int gourdBet = Integer.parseInt(textFieldGourd.getText());
+        int roosterBet = Integer.parseInt(textFieldRooster.getText());
+        int deerBet = Integer.parseInt(textFieldDeer.getText());
 
-          int totalBet = shrimpBet + crabBet + fishBet + gourdBet + roosterBet + deerBet;
+        int totalBet = shrimpBet + crabBet + fishBet + gourdBet + roosterBet + deerBet;
 
-          if (totalBet > myMoney) {
-              JOptionPane.showMessageDialog(null, "Số tiền cược vượt quá số tiền hiện có!");
-              return;
-          }
+        if (totalBet > myMoney) {
+            JOptionPane.showMessageDialog(null, "Số tiền cược vượt quá số tiền hiện có!");
+            return;
+        }
 
-          for (int i = 0; i < 3; i++) {
-              int roll = rand.nextInt(6) + 1;
-              switch (roll) {
-              case 1:
-                  diceResult.put("Tôm", diceResult.get("Tôm") + 1);
-                  break;
-              case 2:
-                  diceResult.put("Cua", diceResult.get("Cua") + 1);
-                  break;
-              case 3:
-                  diceResult.put("Cá", diceResult.get("Cá") + 1);
-                  break;
-              case 4:
-                  diceResult.put("Bầu", diceResult.get("Bầu") + 1);
-                  break;
-              case 5:
-                  diceResult.put("Gà", diceResult.get("Gà") + 1);
-                  break;
-              case 6:
-                  diceResult.put("Nai", diceResult.get("Nai") + 1);
-                  break;
-          }
-              totalRolls++;
-          }
+        for (int i = 0; i < 3; i++) {
+            int roll = rand.nextInt(6) + 1;
+            switch (roll) {
+            case 1:
+                diceResult.put("Tôm", diceResult.get("Tôm") + 1);
+                break;
+            case 2:
+                diceResult.put("Cua", diceResult.get("Cua") + 1);
+                break;
+            case 3:
+                diceResult.put("Cá", diceResult.get("Cá") + 1);
+                break;
+            case 4:
+                diceResult.put("Bầu", diceResult.get("Bầu") + 1);
+                break;
+            case 5:
+                diceResult.put("Gà", diceResult.get("Gà") + 1);
+                break;
+            case 6:
+                diceResult.put("Nai", diceResult.get("Nai") + 1);
+                break;
+        }
+            totalRolls++;
+        }
 
-          StringBuilder resultText = new StringBuilder("<html>");
-          for (String key : diceResult.keySet()) {
-              int bet = Integer.parseInt(getTextFieldByName(key).getText());
-              int win = diceResult.get(key) * bet;
-              if (diceResult.get(key) > 0) {
-                  resultText.append(key).append(": ").append(diceResult.get(key)).append(", Bạn được cộng ").append(win).append("<br>");
-                  totalWin += win;
-              } else {
-                  resultText.append(key).append(": ").append(diceResult.get(key)).append(", Bạn mất ").append(bet).append("<br>");
-                  totalLose += bet; // Cập nhật số tiền bị mất
-              }
-          }
-          resultText.append("</html>");
-          JOptionPane.showMessageDialog(null, resultText.toString());
+        StringBuilder resultText = new StringBuilder("<html>");
+        for (String key : diceResult.keySet()) {
+            int bet = Integer.parseInt(getTextFieldByName(key).getText());
+            int win = diceResult.get(key) * bet;
+            if (diceResult.get(key) > 0) {
+                resultText.append(key).append(": ").append(diceResult.get(key)).append(", Bạn được cộng ").append(win).append("<br>");
+                totalWin += win;
+            } else {
+                resultText.append(key).append(": ").append(diceResult.get(key)).append(", Bạn mất ").append(bet).append("<br>");
+                totalLose += bet; // Cập nhật số tiền bị mất
+            }
+        }
+        resultText.append("</html>");
+        JOptionPane.showMessageDialog(null, resultText.toString());
 
-          myMoney = myMoney + totalWin - totalLose;
+        myMoney = myMoney + totalWin - totalLose;
 
-          String message = "Số tiền cược: " + totalBet + "\n"
-                  + "Số tiền có được: " + totalWin + "\n"
-                  + "Số tiền bị mất: " + totalLose + "\n"
-                  + "Số tiền hiện tại: " + myMoney;
-          JOptionPane.showMessageDialog(null, message);
-      }
+        String message = "Số tiền cược: " + totalBet + "\n"
+                + "Số tiền có được: " + totalWin + "\n"
+                + "Số tiền bị mất: " + totalLose + "\n"
+                + "Số tiền hiện tại: " + myMoney;
+        JOptionPane.showMessageDialog(null, message);
+    }
 
-      private JTextField getTextFieldByName(String name) {
-          Component[] components = contentPane.getComponents();
-          for (Component component : components) {
-              if (component instanceof JTextField && component.getName().equals(name)) {
-                  return (JTextField) component;
-              }
-          }
-          return null;
-      }
+    private JTextField getTextFieldByName(String name) {
+        Component[] components = contentPane.getComponents();
+        for (Component component : components) {
+            if (component instanceof JTextField && component.getName().equals(name)) {
+                return (JTextField) component;
+            }
+        }
+        return null;
+    }
 }
