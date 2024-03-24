@@ -130,72 +130,84 @@ public class ViewGame extends JFrame {
     }
     
     private void rollDice() {
-        Map<String, Integer> diceResult = new HashMap<>();
-        diceResult.put("Tôm", 0);
-        diceResult.put("Cua", 0);
-        diceResult.put("Cá", 0);
-        diceResult.put("Bầu", 0);
-        diceResult.put("Gà", 0);
-        diceResult.put("Nai", 0);
+    	  Map<String, Integer> diceResult = new HashMap<>();
+          diceResult.put("Tôm", 0);
+          diceResult.put("Cua", 0);
+          diceResult.put("Cá", 0);
+          diceResult.put("Bầu", 0);
+          diceResult.put("Gà", 0);
+          diceResult.put("Nai", 0);
 
-        int totalRolls = 0;
-        Random rand = new Random();
-        int totalWin = 0;
-        int totalLose = 0; // Biến để theo dõi tổng số tiền bị mất
+          int totalRolls = 0;
+          Random rand = new Random();
+          int totalWin = 0;
+          int totalLose = 0; // Biến để theo dõi tổng số tiền bị mất
 
-        int shrimpBet = Integer.parseInt(textFieldShrimp.getText());
-        int crabBet = Integer.parseInt(textFieldCrab.getText());
-        int fishBet = Integer.parseInt(textFieldFish.getText());
-        int gourdBet = Integer.parseInt(textFieldGourd.getText());
-        int roosterBet = Integer.parseInt(textFieldRooster.getText());
-        int deerBet = Integer.parseInt(textFieldDeer.getText());
-        
-        int totalBet = shrimpBet + crabBet + fishBet + gourdBet + roosterBet + deerBet;
+          int shrimpBet = Integer.parseInt(textFieldShrimp.getText());
+          int crabBet = Integer.parseInt(textFieldCrab.getText());
+          int fishBet = Integer.parseInt(textFieldFish.getText());
+          int gourdBet = Integer.parseInt(textFieldGourd.getText());
+          int roosterBet = Integer.parseInt(textFieldRooster.getText());
+          int deerBet = Integer.parseInt(textFieldDeer.getText());
 
-        if (totalBet > myMoney) {
-            JOptionPane.showMessageDialog(null, "Số tiền cược vượt quá số tiền hiện có!");
-            return;
-        }
+          int totalBet = shrimpBet + crabBet + fishBet + gourdBet + roosterBet + deerBet;
 
-        for (int i = 0; i < 3; i++) {
-            int roll = rand.nextInt(6) + 1;
-            switch (roll) {
-            case 1:
-                diceResult.put("Tôm", diceResult.get("Tôm") + 1);
-                break;
-            case 2:
-                diceResult.put("Cua", diceResult.get("Cua") + 1);
-                break;
-            case 3:
-                diceResult.put("Cá", diceResult.get("Cá") + 1);
-                break;
-            case 4:
-                diceResult.put("Bầu", diceResult.get("Bầu") + 1);
-                break;
-            case 5:
-                diceResult.put("Gà", diceResult.get("Gà") + 1);
-                break;
-            case 6:
-                diceResult.put("Nai", diceResult.get("Nai") + 1);
-                break;
-        }
-            totalRolls++;
-        }
-        
-        StringBuilder resultText = new StringBuilder("<html>");
-        for (String key : diceResult.keySet()) {
-            int bet = Integer.parseInt(getTextFieldByName(key).getText());
-            int win = diceResult.get(key) * bet;
-            if (diceResult.get(key) > 0) {
-                resultText.append(key).append(": ").append(diceResult.get(key)).append(", Bạn được cộng ").append(win).append("<br>");
-                totalWin += win;
-            } else {
-                resultText.append(key).append(": ").append(diceResult.get(key)).append(", Bạn mất ").append(bet).append("<br>");
-                totalLose += bet; // Cập nhật số tiền bị mất
-            }
-        }
-        resultText.append("</html>");
-        JOptionPane.showMessageDialog(null, resultText.toString());
+          if (totalBet > myMoney) {
+              JOptionPane.showMessageDialog(null, "Số tiền cược vượt quá số tiền hiện có!");
+              return;
+          }
 
-    }
+          for (int i = 0; i < 3; i++) {
+              int roll = rand.nextInt(6) + 1;
+              switch (roll) {
+              case 1:
+                  diceResult.put("Tôm", diceResult.get("Tôm") + 1);
+                  break;
+              case 2:
+                  diceResult.put("Cua", diceResult.get("Cua") + 1);
+                  break;
+              case 3:
+                  diceResult.put("Cá", diceResult.get("Cá") + 1);
+                  break;
+              case 4:
+                  diceResult.put("Bầu", diceResult.get("Bầu") + 1);
+                  break;
+              case 5:
+                  diceResult.put("Gà", diceResult.get("Gà") + 1);
+                  break;
+              case 6:
+                  diceResult.put("Nai", diceResult.get("Nai") + 1);
+                  break;
+          }
+              totalRolls++;
+          }
+
+          StringBuilder resultText = new StringBuilder("<html>");
+          for (String key : diceResult.keySet()) {
+              int bet = Integer.parseInt(getTextFieldByName(key).getText());
+              int win = diceResult.get(key) * bet;
+              if (diceResult.get(key) > 0) {
+                  resultText.append(key).append(": ").append(diceResult.get(key)).append(", Bạn được cộng ").append(win).append("<br>");
+                  totalWin += win;
+              } else {
+                  resultText.append(key).append(": ").append(diceResult.get(key)).append(", Bạn mất ").append(bet).append("<br>");
+                  totalLose += bet; // Cập nhật số tiền bị mất
+              }
+          }
+          resultText.append("</html>");
+          JOptionPane.showMessageDialog(null, resultText.toString());
+
+          myMoney = myMoney + totalWin - totalLose;
+
+      }
+
+      private JTextField getTextFieldByName(String name) {
+          Component[] components = contentPane.getComponents();
+          for (Component component : components) {
+              if (component instanceof JTextField && component.getName().equals(name)) {
+                  return (JTextField) component;
+              }
+          }
+          return null;
+      }
 }
