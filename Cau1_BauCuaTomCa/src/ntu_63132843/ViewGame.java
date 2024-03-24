@@ -179,7 +179,7 @@ public class ViewGame extends JFrame {
                   diceResult.put("Nai", diceResult.get("Nai") + 1);
                   break;
           }
-             
+              totalRolls++;
           }
 
           StringBuilder resultText = new StringBuilder("<html>");
