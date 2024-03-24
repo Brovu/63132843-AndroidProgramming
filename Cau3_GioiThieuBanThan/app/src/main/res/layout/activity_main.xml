@@ -10,23 +10,23 @@
 
 
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/ten"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Hồ Đăng Tài"
+        android:text="Huỳnh Lê Anh Vũ"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginTop="20dp"/>
 
     <TextView
-        android:id="@+id/mota"
+        android:id="@+id/tieuDeMoTa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textViewName"
+        android:layout_below="@id/ten"
         android:layout_centerHorizontal="true"
-        android:text="Mô Tả Bản Thân:"
+        android:text="Giới Thiệu Sơ Lược"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         android:layout_marginTop="20dp"/>
@@ -35,9 +35,9 @@
         android:id="@+id/textViewDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/mota"
+        android:layout_below="@id/tieuDeMoTa"
         android:layout_centerHorizontal="true"
-        android:text="Sinh Viên K63 - Đại Học Nha Trang - Khoa Công Nghệ Thông Tin"
+        android:text="Khóa 63 Công Nghệ Thông Tin - Đại Học Nha Trang"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         android:layout_marginTop="20dp"/>
@@ -47,12 +47,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewDescription"
         android:layout_centerHorizontal="true"
-        android:text="MSSV: 63135354"
+        android:text="MSSV: 63132843"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         android:layout_marginTop="20dp"/>
     <TextView
-        android:id="@+id/lophocphan"
+        android:id="@+id/lopHP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/mssv"
@@ -65,9 +65,19 @@
         android:id="@+id/monhoc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lophocphan"
+        android:layout_below="@id/lopHP"
         android:layout_centerHorizontal="true"
         android:text="Lập Trình Android"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/soThich"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lopHP"
+        android:layout_centerHorizontal="true"
+        android:text="Xem Phim, Ca hát, Ăn, Ngủ"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         android:layout_marginTop="20dp"/>
