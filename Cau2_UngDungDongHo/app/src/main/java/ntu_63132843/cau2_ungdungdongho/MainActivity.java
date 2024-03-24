@@ -32,7 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
         updateTime();
 
-
+        StopwatchFragment stopwatchFragment = new StopwatchFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.fragment_container, stopwatchFragment);
+        transaction.commit();
     }
 
     private void updateTime() {
