@@ -179,7 +179,7 @@ public class ViewGame extends JFrame {
                   diceResult.put("Nai", diceResult.get("Nai") + 1);
                   break;
           }
-              totalRolls++;
+             
           }
 
           StringBuilder resultText = new StringBuilder("<html>");
@@ -199,6 +199,11 @@ public class ViewGame extends JFrame {
 
           myMoney = myMoney + totalWin - totalLose;
 
+          String message = "Số tiền cược: " + totalBet + "\n"
+                  + "Số tiền có được: " + totalWin + "\n"
+                  + "Số tiền bị mất: " + totalLose + "\n"
+                  + "Số tiền hiện tại: " + myMoney;
+          JOptionPane.showMessageDialog(null, message);
       }
 
       private JTextField getTextFieldByName(String name) {
