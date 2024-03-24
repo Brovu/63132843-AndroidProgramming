@@ -149,5 +149,38 @@ public class ViewGame extends JFrame {
         int gourdBet = Integer.parseInt(textFieldGourd.getText());
         int roosterBet = Integer.parseInt(textFieldRooster.getText());
         int deerBet = Integer.parseInt(textFieldDeer.getText());
+        
+        int totalBet = shrimpBet + crabBet + fishBet + gourdBet + roosterBet + deerBet;
+
+        if (totalBet > myMoney) {
+            JOptionPane.showMessageDialog(null, "Số tiền cược vượt quá số tiền hiện có!");
+            return;
+        }
+
+        for (int i = 0; i < 3; i++) {
+            int roll = rand.nextInt(6) + 1;
+            switch (roll) {
+            case 1:
+                diceResult.put("Tôm", diceResult.get("Tôm") + 1);
+                break;
+            case 2:
+                diceResult.put("Cua", diceResult.get("Cua") + 1);
+                break;
+            case 3:
+                diceResult.put("Cá", diceResult.get("Cá") + 1);
+                break;
+            case 4:
+                diceResult.put("Bầu", diceResult.get("Bầu") + 1);
+                break;
+            case 5:
+                diceResult.put("Gà", diceResult.get("Gà") + 1);
+                break;
+            case 6:
+                diceResult.put("Nai", diceResult.get("Nai") + 1);
+                break;
+        }
+            totalRolls++;
+        }
+
     }
 }
