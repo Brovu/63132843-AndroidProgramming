@@ -82,6 +82,29 @@
         android:textSize="20dp"
         android:layout_marginTop="20dp"/>
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_below="@id/soThich"
+        android:background="@drawable/green_button"
+        android:text="Gọi ngay"
+        android:textColor="#FFFFFF" />
 
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/soThich"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/blue_button"
+        android:text="Nhắn tin"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>
