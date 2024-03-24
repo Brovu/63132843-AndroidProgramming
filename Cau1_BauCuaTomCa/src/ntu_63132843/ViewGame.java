@@ -181,6 +181,21 @@ public class ViewGame extends JFrame {
         }
             totalRolls++;
         }
+        
+        StringBuilder resultText = new StringBuilder("<html>");
+        for (String key : diceResult.keySet()) {
+            int bet = Integer.parseInt(getTextFieldByName(key).getText());
+            int win = diceResult.get(key) * bet;
+            if (diceResult.get(key) > 0) {
+                resultText.append(key).append(": ").append(diceResult.get(key)).append(", Bạn được cộng ").append(win).append("<br>");
+                totalWin += win;
+            } else {
+                resultText.append(key).append(": ").append(diceResult.get(key)).append(", Bạn mất ").append(bet).append("<br>");
+                totalLose += bet; // Cập nhật số tiền bị mất
+            }
+        }
+        resultText.append("</html>");
+        JOptionPane.showMessageDialog(null, resultText.toString());
 
     }
 }
