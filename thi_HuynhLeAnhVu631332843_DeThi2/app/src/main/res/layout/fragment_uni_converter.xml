@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UniConverterFragment">
+
+    <EditText
+        android:id="@+id/input_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Nhập giá trị"
+        android:inputType="numberDecimal"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:id="@+id/spinner_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_value"
+        android:layout_marginTop="20dp"
+        android:entries="@array/input_units"
+        android:layout_centerHorizontal="true"/>
+
+    <Spinner
+        android:id="@+id/spinner_output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinner_input"
+        android:layout_marginTop="20dp"
+        android:entries="@array/output_units"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/convert_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinner_output"
+        android:layout_marginTop="20dp"
+        android:text="Chuyển đổi"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/result_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/convert_button"
+        android:layout_marginTop="20dp"
+        android:text="Kết quả: "
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

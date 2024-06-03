@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">UniConverter</string>
+    <string-array name="input_units">
+        <item>Km</item>
+        <item>Kg</item>
+        <item>Byte</item>
+    </string-array>
+    <string-array name="output_units">
+        <item>m</item>
+        <item>g</item>
+        <item>Bit</item>
+    </string-array>
+</resources>
