@@ -18,8 +18,9 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     WelcomeFragment welcomeFragment = new WelcomeFragment();
-
     UniConverterFragment uniConverterFragment = new UniConverterFragment();
+
+    WelknownCoffeeFragment welknownCoffeeFragment = new WelknownCoffeeFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 } else if (itemId == R.id.uniconverter_fragment) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, uniConverterFragment).commit();
+                    return true;
+                } else if (itemId == R.id.welknowncoffe_fragment) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, welknownCoffeeFragment).commit();
                     return true;
                 }
                 return false;
